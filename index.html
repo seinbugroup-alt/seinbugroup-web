@@ -9,15 +9,20 @@
 :root{--bg:#030D05;--card:#081A0A;--card2:#0D2410;--border:#1A4A20;--primary:#2D8B3A;--light:#4ADE60;--gold:#D4A827;--gold2:#F5D060;--text:#E8F5E9;--sub:#6B9B70;--muted:#3A6B40}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,sans-serif;line-height:1.6}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(3,13,5,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:10px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(3,13,5,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .nav-logo img{height:40px;border-radius:6px}
 .nav-logo-text{font-size:13px;font-weight:800;color:var(--gold)}
 .nav-logo-sub{font-size:8px;color:var(--sub);letter-spacing:1px}
 .nav-links{display:flex;gap:20px}
 .nav-links a{color:var(--sub);font-size:11px;font-weight:600;text-decoration:none;letter-spacing:.5px;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{background:linear-gradient(135deg,var(--primary),var(--light));color:#000;font-size:11px;font-weight:800;padding:8px 16px;border-radius:8px;text-decoration:none;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.lang-switcher{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.lang-btn{background:transparent;border:none;color:var(--sub);font-size:11px;font-weight:700;padding:6px 10px;cursor:pointer;transition:all .2s}
+.lang-btn.active{background:var(--primary);color:#fff}
+.nav-cta{background:linear-gradient(135deg,var(--primary),var(--light));color:#000;font-size:11px;font-weight:800;padding:8px 14px;border-radius:8px;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.nav-cta img{height:18px;border-radius:4px}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;background:radial-gradient(ellipse at center top,#0D2410 0%,var(--bg) 60%);position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(45,139,58,.08) 0%,transparent 70%)}
 .hero-logo{width:120px;margin-bottom:24px;border-radius:12px;animation:fadeInDown .8s ease}
@@ -45,13 +50,14 @@ section{padding:80px 20px;max-width:1100px;margin:0 auto}
 .vision-card h3{font-size:15px;color:var(--gold);margin-bottom:8px}
 .vision-card p{font-size:12px;color:var(--sub);line-height:1.7}
 .entities-bg{background:linear-gradient(180deg,var(--bg) 0%,#060F07 50%,var(--bg) 100%);padding:80px 20px}
-.entities-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.entities-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
 .entity-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:transform .2s,border-color .2s}
 .entity-card:hover{transform:translateY(-4px);border-color:var(--primary)}
 .entity-logo{width:56px;height:56px;object-fit:contain;margin-bottom:12px;border-radius:8px;background:#fff;padding:4px}
 .entity-logo-placeholder{width:56px;height:56px;border-radius:8px;background:var(--card2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:12px}
 .entity-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:2px}
-.entity-tribe{font-size:9px;color:var(--gold);letter-spacing:1px;margin-bottom:6px;font-weight:600}
+.entity-tribe{font-size:9px;color:var(--gold);letter-spacing:1px;margin-bottom:4px;font-weight:600}
+.entity-symbolic{font-size:10px;color:var(--light);font-style:italic;margin-bottom:6px;line-height:1.5}
 .entity-desc{font-size:10px;color:var(--sub);line-height:1.6;margin-bottom:10px}
 .entity-badge{display:inline-block;font-size:8px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:.5px}
 .badge-filiale{background:rgba(45,139,58,.2);color:var(--light);border:1px solid rgba(45,139,58,.3)}
@@ -86,11 +92,9 @@ section{padding:80px 20px;max-width:1100px;margin:0 auto}
 .team-name{font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px}
 .team-role{font-size:11px;color:var(--gold);font-weight:600;margin-bottom:4px}
 .team-role-en{font-size:10px;color:var(--sub)}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:32px}
 .contact-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;text-decoration:none;transition:border-color .2s,transform .2s;display:block}
 .contact-card:hover{border-color:var(--primary);transform:translateY(-2px)}
-.contact-icon{font-size:28px;margin-bottom:8px}
-.contact-label{font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px}
 .contact-value{font-size:10px;color:var(--sub)}
 footer{background:#020A03;border-top:1px solid var(--border);padding:40px 20px;text-align:center}
 .footer-logo{width:60px;margin:0 auto 16px;border-radius:8px}
@@ -113,71 +117,188 @@ footer{background:#020A03;border-top:1px solid var(--border);padding:40px 20px;t
     <div><div class="nav-logo-text">SEINBU GROUP</div><div class="nav-logo-sub">SEIGNEURIAL INFINITE BUSINESS GROUP</div></div>
   </div>
   <div class="nav-links">
-    <a href="#vision">Vision</a><a href="#entites">Entités</a><a href="#pi">Pi &amp; SBC</a>
-    <a href="#havila">HAVILA</a><a href="#equipe">Équipe</a><a href="#contact">Contact</a>
+    <a href="#vision" data-fr="Vision" data-en="Vision">Vision</a>
+    <a href="#entites" data-fr="Entités" data-en="Entities">Entités</a>
+    <a href="#pi" data-fr="Pi &amp; SBC" data-en="Pi &amp; SBC">Pi &amp; SBC</a>
+    <a href="#havila" data-fr="HAVILA" data-en="HAVILA">HAVILA</a>
+    <a href="#equipe" data-fr="Équipe" data-en="Team">Équipe</a>
+    <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
   </div>
-  <a href="https://seinbu-one.vercel.app" target="_blank" class="nav-cta"><img src="assets/logo-seinbu-one.png" style="height:18px;vertical-align:middle;border-radius:4px;margin-right:6px"/>SEINBU ONE</a>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="https://seinbu-one.vercel.app" target="_blank" class="nav-cta">
+      <img src="assets/logo-seinbu-one.png" alt="SEINBU ONE"/>SEINBU ONE
+    </a>
+  </div>
 </nav>
 
 <div class="hero">
   <img src="assets/logo-group.jpg" alt="SEINBU GROUP" class="hero-logo"/>
   <div class="hero-title">SEINBU GROUP SA</div>
   <div class="hero-subtitle">SEIGNEURIAL INFINITE BUSINESS GROUP · ABIDJAN, CÔTE D'IVOIRE</div>
-  <div class="hero-tagline"><em>Un conglomérat. Une vision. Une Afrique souveraine.</em></div>
+  <div class="hero-tagline"><em data-fr="Un conglomérat. Une vision. Une Afrique souveraine." data-en="One conglomerate. One vision. One sovereign Africa.">Un conglomérat. Une vision. Une Afrique souveraine.</em></div>
   <div class="hero-btns">
-    <a href="https://seinbu-one.vercel.app" target="_blank" class="btn-primary">🚀 Découvrir SEINBU ONE</a>
-    <a href="#entites" class="btn-secondary">📋 Nos 13 Entités</a>
-    <a href="#pi" class="btn-secondary">π Investir Pi Bonds</a>
+    <a href="https://seinbu-one.vercel.app" target="_blank" class="btn-primary" data-fr="🚀 Découvrir SEINBU ONE" data-en="🚀 Discover SEINBU ONE">🚀 Découvrir SEINBU ONE</a>
+    <a href="#entites" class="btn-secondary" data-fr="📋 Nos 13 Entités" data-en="📋 Our 13 Entities">📋 Nos 13 Entités</a>
+    <a href="#pi" class="btn-secondary" data-fr="π Investir Pi Bonds" data-en="π Invest Pi Bonds">π Investir Pi Bonds</a>
   </div>
   <div class="hero-scroll">↓</div>
 </div>
 
 <div class="stats-band">
   <div class="stats-grid">
-    <div class="stat-item"><div class="stat-value">13</div><div class="stat-label">ENTITÉS DU GROUPE</div></div>
-    <div class="stat-item"><div class="stat-value">200K+</div><div class="stat-label">PIONNIERS PI CI</div></div>
-    <div class="stat-item"><div class="stat-value">$314K</div><div class="stat-label">GCV PI NETWORK</div></div>
-    <div class="stat-item"><div class="stat-value">63,6 Mds</div><div class="stat-label">FCFA FINANCÉS</div></div>
-    <div class="stat-item"><div class="stat-value">2026</div><div class="stat-label">ANNÉE DE LANCEMENT</div></div>
+    <div class="stat-item"><div class="stat-value">13</div><div class="stat-label" data-fr="ENTITÉS DU GROUPE" data-en="GROUP ENTITIES">ENTITÉS DU GROUPE</div></div>
+    <div class="stat-item"><div class="stat-value">200K+</div><div class="stat-label" data-fr="PIONNIERS PI CI" data-en="PI PIONEERS CI">PIONNIERS PI CI</div></div>
+    <div class="stat-item"><div class="stat-value">$314K</div><div class="stat-label" data-fr="GCV PI NETWORK" data-en="PI NETWORK GCV">GCV PI NETWORK</div></div>
+    <div class="stat-item"><div class="stat-value">63,6 Mds</div><div class="stat-label" data-fr="FCFA FINANCÉS" data-en="FCFA FINANCED">FCFA FINANCÉS</div></div>
+    <div class="stat-item"><div class="stat-value">2026</div><div class="stat-label" data-fr="ANNÉE DE LANCEMENT" data-en="LAUNCH YEAR">ANNÉE DE LANCEMENT</div></div>
   </div>
 </div>
 
 <section id="vision">
-  <div class="section-title">Notre Vision</div>
-  <div class="section-sub">MISSION · VALEURS · ANCRAGE</div>
+  <div class="section-title" data-fr="Notre Vision" data-en="Our Vision">Notre Vision</div>
+  <div class="section-sub" data-fr="MISSION · VALEURS · ANCRAGE" data-en="MISSION · VALUES · ROOTS">MISSION · VALEURS · ANCRAGE</div>
   <div class="vision-grid">
-    <div class="vision-card"><div class="vision-icon">🌍</div><h3>Souveraineté Africaine</h3><p>SEINBU GROUP incarne la conviction qu'une Afrique souveraine passe par des conglomérats africains puissants, ancrés dans leurs valeurs et tournés vers l'avenir. Nous construisons pour les générations futures.</p></div>
-    <div class="vision-card"><div class="vision-icon">π</div><h3>Pionniers Pi Network</h3><p>Partenaire stratégique de Pi Network en Côte d'Ivoire, SEINBU GROUP mobilise 200 000+ pionniers autour d'un écosystème économique réel : agriculture, finance, santé, technologie et bien plus.</p></div>
-    <div class="vision-card"><div class="vision-icon">♾️</div><h3>Richesse Générationnelle</h3><p>Think Sustainable — Pensons Durable. Notre modèle intègre la durabilité à chaque niveau : environnemental, social et financier. Nous bâtissons un héritage, pas seulement des profits.</p></div>
-    <div class="vision-card"><div class="vision-icon">🏛️</div><h3>Structure Biblique 12+1</h3><p>Inspirée des 12 tribus d'Israël plus la tribu de Joseph divisée en Éphraïm et Manassé, notre architecture à 13 entités symbolise l'unité dans la diversité et une vision fondée sur des principes éternels.</p></div>
+    <div class="vision-card"><div class="vision-icon">🌍</div><h3 data-fr="Souveraineté Africaine" data-en="African Sovereignty">Souveraineté Africaine</h3><p data-fr="SEINBU GROUP incarne la conviction qu'une Afrique souveraine passe par des conglomérats africains puissants, ancrés dans leurs valeurs et tournés vers l'avenir. Nous construisons pour les générations futures." data-en="SEINBU GROUP embodies the conviction that a sovereign Africa requires powerful African conglomerates, rooted in their values and turned toward the future. We build for generations to come.">SEINBU GROUP incarne la conviction qu'une Afrique souveraine passe par des conglomérats africains puissants, ancrés dans leurs valeurs et tournés vers l'avenir. Nous construisons pour les générations futures.</p></div>
+    <div class="vision-card"><div class="vision-icon">π</div><h3 data-fr="Pionniers Pi Network" data-en="Pi Network Pioneers">Pionniers Pi Network</h3><p data-fr="Partenaire stratégique de Pi Network en Côte d'Ivoire, SEINBU GROUP mobilise 200 000+ pionniers autour d'un écosystème économique réel : agriculture, finance, santé, technologie et bien plus." data-en="Strategic partner of Pi Network in Côte d'Ivoire, SEINBU GROUP mobilizes 200,000+ pioneers around a real economic ecosystem: agriculture, finance, health, technology and much more.">Partenaire stratégique de Pi Network en Côte d'Ivoire, SEINBU GROUP mobilise 200 000+ pionniers autour d'un écosystème économique réel : agriculture, finance, santé, technologie et bien plus.</p></div>
+    <div class="vision-card"><div class="vision-icon">♾️</div><h3 data-fr="Richesse Générationnelle" data-en="Generational Wealth">Richesse Générationnelle</h3><p data-fr="Think Sustainable — Pensons Durable. Notre modèle intègre la durabilité à chaque niveau : environnemental, social et financier. Nous bâtissons un héritage, pas seulement des profits." data-en="Think Sustainable. Our model integrates sustainability at every level: environmental, social and financial. We build a legacy, not just profits.">Think Sustainable — Pensons Durable. Notre modèle intègre la durabilité à chaque niveau : environnemental, social et financier. Nous bâtissons un héritage, pas seulement des profits.</p></div>
+    <div class="vision-card"><div class="vision-icon">🏛️</div><h3 data-fr="Structure Biblique 12+1" data-en="Biblical Structure 12+1">Structure Biblique 12+1</h3><p data-fr="Inspirée des 12 tribus d'Israël plus la tribu de Joseph divisée en Éphraïm et Manassé, notre architecture à 13 entités symbolise l'unité dans la diversité et une vision fondée sur des principes éternels." data-en="Inspired by the 12 tribes of Israel plus the tribe of Joseph divided into Ephraim and Manasseh, our 13-entity architecture symbolizes unity in diversity and a vision founded on eternal principles.">Inspirée des 12 tribus d'Israël plus la tribu de Joseph divisée en Éphraïm et Manassé, notre architecture à 13 entités symbolise l'unité dans la diversité et une vision fondée sur des principes éternels.</p></div>
   </div>
 </section>
 
 <div class="entities-bg" id="entites">
   <div style="max-width:1100px;margin:0 auto">
-    <div class="section-title">Nos 13 Entités</div>
-    <div class="section-sub">HOLDING · FILIALES · FONDATION · OPÉRATION</div>
+    <div class="section-title" data-fr="Nos 13 Entités" data-en="Our 13 Entities">Nos 13 Entités</div>
+    <div class="section-sub" data-fr="HOLDING · FILIALES · FONDATION · OPÉRATION" data-en="HOLDING · SUBSIDIARIES · FOUNDATION · OPERATION">HOLDING · FILIALES · FONDATION · OPÉRATION</div>
     <div class="entities-grid">
-      <div class="entity-card"><img src="assets/logo-group.jpg" class="entity-logo" alt="GROUP"/><div class="entity-name">SEINBU GROUP SA</div><div class="entity-tribe">⚜️ TRIBU DE LÉVI</div><div class="entity-desc">Holding du conglomérat. Coordination stratégique, gouvernance et vision globale. Siège : Abidjan, Côte d'Ivoire.</div><span class="entity-badge badge-holding">HOLDING</span></div>
-      <div class="entity-card"><img src="assets/logo-capital.png" class="entity-logo" alt="CAPITAL"/><div class="entity-name">SEINBU CAPITAL</div><div class="entity-tribe">💰 JOSEPH · ÉPHRAÏM</div><div class="entity-desc">Investissement Pi Bonds · 8 à 13% de rendement annuel · Financement des 63,6 milliards FCFA du groupe au GCV.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-fintech.png" class="entity-logo" alt="FINTECH"/><div class="entity-name">SEINBU FINTECH</div><div class="entity-tribe">💜 JOSEPH · MANASSÉ</div><div class="entity-desc">Finance Numérique &amp; Pi Network · Paiements SBC · Transferts P2P · Infrastructure financière de l'écosystème.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-ani.png" class="entity-logo" alt="ANI"/><div class="entity-name">ANI</div><div class="entity-tribe">🌾 TRIBU D'ISSACAR</div><div class="entity-desc">Agriculture Nouvelle Ivoirienne · 2 310 ha engagés · Riz, Manioc, Banane Plantain · BioUrin™ · Phase pilote 2026.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-nutritech.png" class="entity-logo" alt="NUTRITECH"/><div class="entity-name">NUTRITECH CELLULAIRE</div><div class="entity-tribe">🌿 TRIBU D'ASER</div><div class="entity-desc">Nutrition &amp; Santé · Compléments alimentaires naturels · NutriCell-AI · Adaptés au contexte africain.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-editions.png" class="entity-logo" alt="ÉDITIONS"/><div class="entity-name">SEINBU ÉDITIONS</div><div class="entity-tribe">📚 TRIBU DE JUDA</div><div class="entity-desc">Édition · Culture Africaine · EdTech · Publications bilingues · Livres Pi Network · Méthode PQCES.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-telecom.png" class="entity-logo" alt="TELECOM"/><div class="entity-name">SEINBU TELECOM</div><div class="entity-tribe">📡 TRIBU DE NEPHTALI</div><div class="entity-desc">Télécommunications &amp; Super App · Développeur de SEINBU ONE · Recharges &amp; Data Pi-ready.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-immobilier.png" class="entity-logo" alt="IMMOBILIER"/><div class="entity-name">SEINBU IMMOBILIER</div><div class="entity-tribe">🏗️ TRIBU DE ZABULON</div><div class="entity-desc">Immobilier Intelligent &amp; Tokenisé Pi · Acquisition, réhabilitation et gestion de biens immobiliers à Abidjan.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-security.png" class="entity-logo" alt="SECURITY"/><div class="entity-name">SEINBU SECURITY</div><div class="entity-tribe">🛡️ TRIBU DE DAN</div><div class="entity-desc">Cybersécurité · KYC Pi · CERT Afrique · Protection des identités numériques et des actifs blockchain.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-tech.png" class="entity-logo" alt="TECH"/><div class="entity-name">SEINBU TECH</div><div class="entity-tribe">🔬 TRIBU DE RUBEN</div><div class="entity-desc">R&amp;D Scientifique · Intelligence Artificielle · Souveraineté Technologique Africaine.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-industrie.png" class="entity-logo" alt="INDUSTRIE"/><div class="entity-name">SEINBU INDUSTRIE</div><div class="entity-tribe">⚙️ TRIBU DE GAD</div><div class="entity-desc">Industrie Lourde · Automobile · Naval · Ferroviaire · Énergie Solaire, Hydro &amp; Bioénergie tokenisée SBC.</div><span class="entity-badge badge-filiale">FILIALE</span></div>
-      <div class="entity-card"><img src="assets/logo-havila.png" class="entity-logo" alt="HAVILA"/><div class="entity-name">HAVILA FOUNDATION</div><div class="entity-tribe">🎗️ TRIBU DE BENJAMIN</div><div class="entity-desc">Fondation indépendante partenaire · Santé · Éducation · Désendettement CI.</div><span class="entity-badge badge-fondation">FONDATION PARTENAIRE</span></div>
-      <div class="entity-card"><div class="entity-logo-placeholder">🇨🇮</div><div class="entity-name">DÉSENDETTEMENT CI</div><div class="entity-tribe">🤝 TRIBU DE SIMÉON</div><div class="entity-desc">Opération nationale · HAVILA + Pi Network CI + État ivoirien + Comité indépendant · Volet technique FINTECH.</div><span class="entity-badge badge-operation">OPÉRATION NATIONALE</span></div>
+
+      <div class="entity-card">
+        <img src="assets/logo-group.jpg" class="entity-logo" alt="GROUP"/>
+        <div class="entity-name">SEINBU GROUP SA</div>
+        <div class="entity-tribe" data-fr="⚜️ TRIBU DE LÉVI" data-en="⚜️ TRIBE OF LEVI">⚜️ TRIBU DE LÉVI</div>
+        <div class="entity-symbolic" data-fr="'Comme Lévi fut consacré au service du Temple, SEINBU GROUP est consacré à bâtir l'édifice économique de l'Afrique.'" data-en="'As Levi was consecrated to serve the Temple, SEINBU GROUP is dedicated to building Africa's economic edifice.'">"Comme Lévi fut consacré au service du Temple, SEINBU GROUP est consacré à bâtir l'édifice économique de l'Afrique."</div>
+        <div class="entity-desc" data-fr="Holding du conglomérat. Coordination stratégique, gouvernance et vision globale. Siège : Abidjan, Côte d'Ivoire." data-en="Conglomerate holding company. Strategic coordination, governance and global vision. Headquarters: Abidjan, Côte d'Ivoire.">Holding du conglomérat. Coordination stratégique, gouvernance et vision globale. Siège : Abidjan, Côte d'Ivoire.</div>
+        <span class="entity-badge badge-holding" data-fr="HOLDING" data-en="HOLDING">HOLDING</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-capital.png" class="entity-logo" alt="CAPITAL"/>
+        <div class="entity-name">SEINBU CAPITAL</div>
+        <div class="entity-tribe" data-fr="💰 JOSEPH · ÉPHRAÏM" data-en="💰 JOSEPH · EPHRAIM">💰 JOSEPH · ÉPHRAÏM</div>
+        <div class="entity-symbolic" data-fr="'Comme Éphraïm multiplia les nations, SEINBU CAPITAL multiplie la richesse par Pi.'" data-en="'As Ephraim multiplied the nations, SEINBU CAPITAL multiplies wealth through Pi.'">"Comme Éphraïm multiplia les nations, SEINBU CAPITAL multiplie la richesse par Pi."</div>
+        <div class="entity-desc" data-fr="Investissement Pi Bonds · 8 à 13% de rendement annuel · Financement des 63,6 milliards FCFA du groupe au GCV." data-en="Pi Bonds investment · 8 to 13% annual return · Financing the group's 63.6 billion FCFA at GCV.">Investissement Pi Bonds · 8 à 13% de rendement annuel · Financement des 63,6 milliards FCFA du groupe au GCV.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-fintech.png" class="entity-logo" alt="FINTECH"/>
+        <div class="entity-name">SEINBU FINTECH</div>
+        <div class="entity-tribe" data-fr="💜 JOSEPH · MANASSÉ" data-en="💜 JOSEPH · MANASSEH">💜 JOSEPH · MANASSÉ</div>
+        <div class="entity-symbolic" data-fr="'Comme Manassé fit oublier les épreuves passées, SEINBU FINTECH efface les barrières financières de l'Afrique.'" data-en="'As Manasseh made the past trials forgotten, SEINBU FINTECH erases Africa's financial barriers.'">"Comme Manassé fit oublier les épreuves passées, SEINBU FINTECH efface les barrières financières de l'Afrique."</div>
+        <div class="entity-desc" data-fr="Finance Numérique &amp; Pi Network · Paiements SBC · Transferts P2P · Infrastructure financière de l'écosystème." data-en="Digital Finance &amp; Pi Network · SBC Payments · P2P Transfers · Financial infrastructure of the ecosystem.">Finance Numérique &amp; Pi Network · Paiements SBC · Transferts P2P · Infrastructure financière de l'écosystème.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-ani.png" class="entity-logo" alt="ANI"/>
+        <div class="entity-name">ANI</div>
+        <div class="entity-tribe" data-fr="🌾 TRIBU D'ISSACAR" data-en="🌾 TRIBE OF ISSACHAR">🌾 TRIBU D'ISSACAR</div>
+        <div class="entity-symbolic" data-fr="'Comme Issacar connaissait les saisons, ANI cultive la terre au bon moment, avec la bonne technologie.'" data-en="'As Issachar knew the seasons, ANI cultivates the land at the right time, with the right technology.'">"Comme Issacar connaissait les saisons, ANI cultive la terre au bon moment, avec la bonne technologie."</div>
+        <div class="entity-desc" data-fr="Agriculture Nouvelle Ivoirienne · 2 310 ha engagés · Riz, Manioc, Banane Plantain · BioUrin™ · Phase pilote 2026." data-en="New Ivorian Agriculture · 2,310 ha engaged · Rice, Cassava, Plantain Banana · BioUrin™ · Pilot phase 2026.">Agriculture Nouvelle Ivoirienne · 2 310 ha engagés · Riz, Manioc, Banane Plantain · BioUrin™ · Phase pilote 2026.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-nutritech.png" class="entity-logo" alt="NUTRITECH"/>
+        <div class="entity-name">NUTRITECH CELLULAIRE</div>
+        <div class="entity-tribe" data-fr="🌿 TRIBU D'ASER" data-en="🌿 TRIBE OF ASHER">🌿 TRIBU D'ASER</div>
+        <div class="entity-symbolic" data-fr="'Comme Aser produisait les mets royaux, NUTRITECH nourrit l'Afrique avec excellence et science.'" data-en="'As Asher produced royal delicacies, NUTRITECH nourishes Africa with excellence and science.'">"Comme Aser produisait les mets royaux, NUTRITECH nourrit l'Afrique avec excellence et science."</div>
+        <div class="entity-desc" data-fr="Nutrition &amp; Santé · Compléments alimentaires naturels · NutriCell-AI · Adaptés au contexte africain." data-en="Nutrition &amp; Health · Natural food supplements · NutriCell-AI · Adapted to the African context.">Nutrition &amp; Santé · Compléments alimentaires naturels · NutriCell-AI · Adaptés au contexte africain.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-editions.png" class="entity-logo" alt="ÉDITIONS"/>
+        <div class="entity-name">SEINBU ÉDITIONS</div>
+        <div class="entity-tribe" data-fr="📚 TRIBU DE JUDA" data-en="📚 TRIBE OF JUDAH">📚 TRIBU DE JUDA</div>
+        <div class="entity-symbolic" data-fr="'Comme Juda portait le sceptre, SEINBU ÉDITIONS porte la parole et la connaissance africaine.'" data-en="'As Judah bore the scepter, SEINBU ÉDITIONS carries the African word and knowledge.'">"Comme Juda portait le sceptre, SEINBU ÉDITIONS porte la parole et la connaissance africaine."</div>
+        <div class="entity-desc" data-fr="Édition · Culture Africaine · EdTech · Publications bilingues · Livres Pi Network · Méthode PQCES." data-en="Publishing · African Culture · EdTech · Bilingual publications · Pi Network books · PQCES method.">Édition · Culture Africaine · EdTech · Publications bilingues · Livres Pi Network · Méthode PQCES.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-telecom.png" class="entity-logo" alt="TELECOM"/>
+        <div class="entity-name">SEINBU TELECOM</div>
+        <div class="entity-tribe" data-fr="📡 TRIBU DE NEPHTALI" data-en="📡 TRIBE OF NAPHTALI">📡 TRIBU DE NEPHTALI</div>
+        <div class="entity-symbolic" data-fr="'Comme Nephtali courait avec rapidité, SEINBU TELECOM connecte l'Afrique à la vitesse de la lumière.'" data-en="'As Naphtali ran with swiftness, SEINBU TELECOM connects Africa at the speed of light.'">"Comme Nephtali courait avec rapidité, SEINBU TELECOM connecte l'Afrique à la vitesse de la lumière."</div>
+        <div class="entity-desc" data-fr="Télécommunications &amp; Super App · Développeur de SEINBU ONE · Recharges &amp; Data Pi-ready." data-en="Telecommunications &amp; Super App · Developer of SEINBU ONE · Pi-ready top-ups &amp; data.">Télécommunications &amp; Super App · Développeur de SEINBU ONE · Recharges &amp; Data Pi-ready.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-immobilier.png" class="entity-logo" alt="IMMOBILIER"/>
+        <div class="entity-name">SEINBU IMMOBILIER</div>
+        <div class="entity-tribe" data-fr="🏗️ TRIBU DE ZABULON" data-en="🏗️ TRIBE OF ZEBULUN">🏗️ TRIBU DE ZABULON</div>
+        <div class="entity-symbolic" data-fr="'Comme Zabulon habitait les rivages et bâtissait, SEINBU IMMOBILIER construit l'Afrique pierre par pierre.'" data-en="'As Zebulun dwelt by the shores and built, SEINBU IMMOBILIER builds Africa stone by stone.'">"Comme Zabulon habitait les rivages et bâtissait, SEINBU IMMOBILIER construit l'Afrique pierre par pierre."</div>
+        <div class="entity-desc" data-fr="Immobilier Intelligent &amp; Tokenisé Pi · Acquisition, réhabilitation et gestion de biens immobiliers à Abidjan." data-en="Smart &amp; Pi-Tokenized Real Estate · Acquisition, rehabilitation and management of real estate in Abidjan.">Immobilier Intelligent &amp; Tokenisé Pi · Acquisition, réhabilitation et gestion de biens immobiliers à Abidjan.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-security.png" class="entity-logo" alt="SECURITY"/>
+        <div class="entity-name">SEINBU SECURITY</div>
+        <div class="entity-tribe" data-fr="🛡️ TRIBU DE DAN" data-en="🛡️ TRIBE OF DAN">🛡️ TRIBU DE DAN</div>
+        <div class="entity-symbolic" data-fr="'Comme Dan jugeait et protégeait son peuple, SEINBU SECURITY protège les identités et les actifs numériques.'" data-en="'As Dan judged and protected his people, SEINBU SECURITY protects digital identities and assets.'">"Comme Dan jugeait et protégeait son peuple, SEINBU SECURITY protège les identités et les actifs numériques."</div>
+        <div class="entity-desc" data-fr="Cybersécurité · KYC Pi · CERT Afrique · Protection des identités numériques et des actifs blockchain." data-en="Cybersecurity · Pi KYC · CERT Africa · Protection of digital identities and blockchain assets.">Cybersécurité · KYC Pi · CERT Afrique · Protection des identités numériques et des actifs blockchain.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-tech.png" class="entity-logo" alt="TECH"/>
+        <div class="entity-name">SEINBU TECH</div>
+        <div class="entity-tribe" data-fr="🔬 TRIBU DE RUBEN" data-en="🔬 TRIBE OF REUBEN">🔬 TRIBU DE RUBEN</div>
+        <div class="entity-symbolic" data-fr="'Comme Ruben était le premier-né porteur de vision, SEINBU TECH ouvre la voie de la souveraineté technologique africaine.'" data-en="'As Reuben was the firstborn bearer of vision, SEINBU TECH leads the way to African technological sovereignty.'">"Comme Ruben était le premier-né porteur de vision, SEINBU TECH ouvre la voie de la souveraineté technologique africaine."</div>
+        <div class="entity-desc" data-fr="R&amp;D Scientifique · Intelligence Artificielle · Souveraineté Technologique Africaine." data-en="Scientific R&amp;D · Artificial Intelligence · African Technological Sovereignty.">R&amp;D Scientifique · Intelligence Artificielle · Souveraineté Technologique Africaine.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-industrie.png" class="entity-logo" alt="INDUSTRIE"/>
+        <div class="entity-name">SEINBU INDUSTRIE</div>
+        <div class="entity-tribe" data-fr="⚙️ TRIBU DE GAD" data-en="⚙️ TRIBE OF GAD">⚙️ TRIBU DE GAD</div>
+        <div class="entity-symbolic" data-fr="'Comme Gad était une troupe valeureuse, SEINBU INDUSTRIE bâtit l'infrastructure lourde d'une Afrique puissante.'" data-en="'As Gad was a valiant troop, SEINBU INDUSTRIE builds the heavy infrastructure of a powerful Africa.'">"Comme Gad était une troupe valeureuse, SEINBU INDUSTRIE bâtit l'infrastructure lourde d'une Afrique puissante."</div>
+        <div class="entity-desc" data-fr="Industrie Lourde · Automobile · Naval · Ferroviaire · Énergie Solaire, Hydro &amp; Bioénergie tokenisée SBC." data-en="Heavy Industry · Automotive · Naval · Rail · Solar, Hydro &amp; Bioenergy tokenized SBC.">Industrie Lourde · Automobile · Naval · Ferroviaire · Énergie Solaire, Hydro &amp; Bioénergie tokenisée SBC.</div>
+        <span class="entity-badge badge-filiale" data-fr="FILIALE" data-en="SUBSIDIARY">FILIALE</span>
+      </div>
+
+      <div class="entity-card">
+        <img src="assets/logo-havila.png" class="entity-logo" alt="HAVILA"/>
+        <div class="entity-name">HAVILA FOUNDATION</div>
+        <div class="entity-tribe" data-fr="🎗️ TRIBU DE BENJAMIN" data-en="🎗️ TRIBE OF BENJAMIN">🎗️ TRIBU DE BENJAMIN</div>
+        <div class="entity-symbolic" data-fr="'Comme Benjamin était le bien-aimé, HAVILA Foundation prend soin des plus vulnérables avec amour et dignité.'" data-en="'As Benjamin was the beloved, HAVILA Foundation cares for the most vulnerable with love and dignity.'">"Comme Benjamin était le bien-aimé, HAVILA Foundation prend soin des plus vulnérables avec amour et dignité."</div>
+        <div class="entity-desc" data-fr="Fondation indépendante partenaire · Santé · Éducation · Désendettement CI." data-en="Independent partner foundation · Health · Education · CI Debt Relief.">Fondation indépendante partenaire · Santé · Éducation · Désendettement CI.</div>
+        <span class="entity-badge badge-fondation" data-fr="FONDATION PARTENAIRE" data-en="PARTNER FOUNDATION">FONDATION PARTENAIRE</span>
+      </div>
+
+      <div class="entity-card">
+        <div class="entity-logo-placeholder">🇨🇮</div>
+        <div class="entity-name" data-fr="DÉSENDETTEMENT CI" data-en="CI DEBT RELIEF">DÉSENDETTEMENT CI</div>
+        <div class="entity-tribe" data-fr="🤝 TRIBU DE SIMÉON" data-en="🤝 TRIBE OF SIMEON">🤝 TRIBU DE SIMÉON</div>
+        <div class="entity-symbolic" data-fr="'Comme Siméon fut réconcilié avec ses frères, le Désendettement CI réconcilie la Côte d'Ivoire avec sa liberté financière.'" data-en="'As Simeon was reconciled with his brothers, CI Debt Relief reconciles Côte d'Ivoire with its financial freedom.'">"Comme Siméon fut réconcilié avec ses frères, le Désendettement CI réconcilie la Côte d'Ivoire avec sa liberté financière."</div>
+        <div class="entity-desc" data-fr="Opération nationale · HAVILA + Pi Network CI + État ivoirien + Comité indépendant · Volet technique FINTECH." data-en="National operation · HAVILA + Pi Network CI + Ivorian State + Independent committee · Technical component FINTECH.">Opération nationale · HAVILA + Pi Network CI + État ivoirien + Comité indépendant · Volet technique FINTECH.</div>
+        <span class="entity-badge badge-operation" data-fr="OPÉRATION NATIONALE" data-en="NATIONAL OPERATION">OPÉRATION NATIONALE</span>
+      </div>
+
     </div>
   </div>
 </div>
 
 <section id="pi">
-  <div class="section-title">Écosystème Pi &amp; SBC</div>
-  <div class="section-sub">PI NETWORK · GCV · SEINBU COIN</div>
+  <div class="section-title" data-fr="Écosystème Pi &amp; SBC" data-en="Pi &amp; SBC Ecosystem">Écosystème Pi &amp; SBC</div>
+  <div class="section-sub" data-fr="PI NETWORK · GCV · SEINBU COIN" data-en="PI NETWORK · GCV · SEINBU COIN">PI NETWORK · GCV · SEINBU COIN</div>
   <div class="pi-section">
     <div class="pi-logos">
       <img src="assets/logo-pi.jpg" alt="Pi Network" class="pi-logo-img"/>
@@ -186,74 +307,76 @@ footer{background:#020A03;border-top:1px solid var(--border);padding:40px 20px;t
       <div style="font-size:32px;color:var(--gold);font-weight:900">×</div>
       <img src="assets/logo-seinbu-one.png" alt="SEINBU ONE" class="pi-logo-img"/>
     </div>
-    <p style="font-size:14px;color:var(--sub);max-width:600px;margin:0 auto 32px;line-height:1.8">SEINBU GROUP adopte le <strong style="color:var(--gold)">GCV ($314 159/π)</strong> comme taux de référence interne. Le <strong style="color:var(--light)">SBC (SEINBU Coin)</strong> à 10 FCFA/SBC est l'unité de compte de l'écosystème, permettant des microtransactions accessibles à tous les Ivoiriens.</p>
+    <p style="font-size:14px;color:var(--sub);max-width:600px;margin:0 auto 32px;line-height:1.8" data-fr="SEINBU GROUP adopte le GCV ($314 159/π) comme taux de référence interne. Le SBC (SEINBU Coin) à 10 FCFA/SBC est l'unité de compte de l'écosystème, permettant des microtransactions accessibles à tous les Ivoiriens." data-en="SEINBU GROUP adopts the GCV ($314,159/π) as its internal reference rate. The SBC (SEINBU Coin) at 10 FCFA/SBC is the unit of account of the ecosystem, enabling microtransactions accessible to all Ivorians.">SEINBU GROUP adopte le <strong style="color:var(--gold)">GCV ($314 159/π)</strong> comme taux de référence interne. Le <strong style="color:var(--light)">SBC (SEINBU Coin)</strong> à 10 FCFA/SBC est l'unité de compte de l'écosystème, permettant des microtransactions accessibles à tous les Ivoiriens.</p>
     <div class="pi-stats">
-      <div class="pi-stat"><div class="pi-stat-val">$314 159/π</div><div class="pi-stat-label">GCV RÉFÉRENCE</div></div>
-      <div class="pi-stat"><div class="pi-stat-val">10 FCFA</div><div class="pi-stat-label">1 SBC</div></div>
-      <div class="pi-stat"><div class="pi-stat-val">18,8M SBC</div><div class="pi-stat-label">PAR PI</div></div>
-      <div class="pi-stat"><div class="pi-stat-val">8–13%</div><div class="pi-stat-label">RENDEMENT PI BONDS/AN</div></div>
+      <div class="pi-stat"><div class="pi-stat-val">$314 159/π</div><div class="pi-stat-label" data-fr="GCV RÉFÉRENCE" data-en="GCV REFERENCE">GCV RÉFÉRENCE</div></div>
+      <div class="pi-stat"><div class="pi-stat-val">10 FCFA</div><div class="pi-stat-label" data-fr="1 SBC" data-en="1 SBC">1 SBC</div></div>
+      <div class="pi-stat"><div class="pi-stat-val">18,8M SBC</div><div class="pi-stat-label" data-fr="PAR PI" data-en="PER PI">PAR PI</div></div>
+      <div class="pi-stat"><div class="pi-stat-val">8–13%</div><div class="pi-stat-label" data-fr="RENDEMENT PI BONDS/AN" data-en="PI BONDS YIELD/YEAR">RENDEMENT PI BONDS/AN</div></div>
     </div>
-    <a href="https://seinbu-one.vercel.app" target="_blank" class="btn-primary" style="margin-top:8px">🚀 Accéder à SEINBU ONE</a>
+    <a href="https://seinbu-one.vercel.app" target="_blank" class="btn-primary" style="margin-top:8px" data-fr="🚀 Accéder à SEINBU ONE" data-en="🚀 Access SEINBU ONE">🚀 Accéder à SEINBU ONE</a>
   </div>
 </section>
 
 <section id="havila">
-  <div class="section-title">HAVILA &amp; Désendettement CI</div>
-  <div class="section-sub">IMPACT SOCIAL · MISSION NATIONALE</div>
+  <div class="section-title" data-fr="HAVILA &amp; Désendettement CI" data-en="HAVILA &amp; CI Debt Relief">HAVILA &amp; Désendettement CI</div>
+  <div class="section-sub" data-fr="IMPACT SOCIAL · MISSION NATIONALE" data-en="SOCIAL IMPACT · NATIONAL MISSION">IMPACT SOCIAL · MISSION NATIONALE</div>
   <div class="havila-section">
     <div class="havila-header">
       <img src="assets/logo-havila.png" alt="HAVILA" class="havila-logo"/>
-      <div><div class="havila-title">HAVILA FOUNDATION</div><div class="havila-sub">FONDATION INDÉPENDANTE PARTENAIRE · TRIBU DE BENJAMIN</div></div>
+      <div>
+        <div class="havila-title">HAVILA FOUNDATION</div>
+        <div class="havila-sub" data-fr="FONDATION INDÉPENDANTE PARTENAIRE · TRIBU DE BENJAMIN" data-en="INDEPENDENT PARTNER FOUNDATION · TRIBE OF BENJAMIN">FONDATION INDÉPENDANTE PARTENAIRE · TRIBU DE BENJAMIN</div>
+      </div>
     </div>
-    <p style="font-size:12px;color:#9CA3AF;line-height:1.8;margin-bottom:24px">HAVILA Foundation est une entité indépendante liée à SEINBU GROUP par convention de partenariat et par la personne de son fondateur. Elle reçoit une quote-part de chaque vente réalisée dans l'écosystème SEINBU pour financer ses missions sociales en Côte d'Ivoire.</p>
+    <p style="font-size:12px;color:#9CA3AF;line-height:1.8;margin-bottom:24px" data-fr="HAVILA Foundation est une entité indépendante liée à SEINBU GROUP par convention de partenariat et par la personne de son fondateur. Elle reçoit une quote-part de chaque vente réalisée dans l'écosystème SEINBU pour financer ses missions sociales en Côte d'Ivoire." data-en="HAVILA Foundation is an independent entity linked to SEINBU GROUP by a partnership agreement and through the person of its founder. It receives a share of each sale made in the SEINBU ecosystem to fund its social missions in Côte d'Ivoire.">HAVILA Foundation est une entité indépendante liée à SEINBU GROUP par convention de partenariat et par la personne de son fondateur. Elle reçoit une quote-part de chaque vente réalisée dans l'écosystème SEINBU pour financer ses missions sociales en Côte d'Ivoire.</p>
     <div class="havila-grid">
-      <div class="havila-card"><h4>🏥 Santé &amp; Nutrition</h4><p>Accès aux soins et à la nutrition pour les communautés vulnérables. Partenariat avec NUTRITECH CELLULAIRE pour des programmes nutritionnels ciblés.</p></div>
-      <div class="havila-card"><h4>📚 Éducation</h4><p>Soutien à l'éducation des enfants et à la formation professionnelle des jeunes ivoiriens. Partenariat avec SEINBU ÉDITIONS pour l'accès aux ressources pédagogiques.</p></div>
-      <div class="havila-card"><h4>🇨🇮 Désendettement CI</h4><p>Opération nationale initiée par HAVILA en partenariat avec Pi Network CI, l'État ivoirien et un comité indépendant. Volet technique géré par SEINBU FINTECH. Réf. HAVILA-SEINBU/ODC/2026/001.</p></div>
-
+      <div class="havila-card"><h4 data-fr="🏥 Santé &amp; Nutrition" data-en="🏥 Health &amp; Nutrition">🏥 Santé &amp; Nutrition</h4><p data-fr="Accès aux soins et à la nutrition pour les communautés vulnérables. Partenariat avec NUTRITECH CELLULAIRE pour des programmes nutritionnels ciblés." data-en="Access to healthcare and nutrition for vulnerable communities. Partnership with NUTRITECH CELLULAIRE for targeted nutritional programs.">Accès aux soins et à la nutrition pour les communautés vulnérables. Partenariat avec NUTRITECH CELLULAIRE pour des programmes nutritionnels ciblés.</p></div>
+      <div class="havila-card"><h4 data-fr="📚 Éducation" data-en="📚 Education">📚 Éducation</h4><p data-fr="Soutien à l'éducation des enfants et à la formation professionnelle des jeunes ivoiriens. Partenariat avec SEINBU ÉDITIONS pour l'accès aux ressources pédagogiques." data-en="Support for children's education and vocational training for Ivorian youth. Partnership with SEINBU ÉDITIONS for access to educational resources.">Soutien à l'éducation des enfants et à la formation professionnelle des jeunes ivoiriens. Partenariat avec SEINBU ÉDITIONS pour l'accès aux ressources pédagogiques.</p></div>
+      <div class="havila-card"><h4 data-fr="🇨🇮 Désendettement CI" data-en="🇨🇮 CI Debt Relief">🇨🇮 Désendettement CI</h4><p data-fr="Opération nationale initiée par HAVILA en partenariat avec Pi Network CI, l'État ivoirien et un comité indépendant. Volet technique géré par SEINBU FINTECH. Réf. HAVILA-SEINBU/ODC/2026/001." data-en="National operation initiated by HAVILA in partnership with Pi Network CI, the Ivorian State and an independent committee. Technical component managed by SEINBU FINTECH. Ref. HAVILA-SEINBU/ODC/2026/001.">Opération nationale initiée par HAVILA en partenariat avec Pi Network CI, l'État ivoirien et un comité indépendant. Volet technique géré par SEINBU FINTECH. Réf. HAVILA-SEINBU/ODC/2026/001.</p></div>
     </div>
   </div>
 </section>
 
 <section id="galerie">
-  <div class="section-title">Nos Activités</div>
-  <div class="section-sub">TERRAIN · PROJETS · ÉVÉNEMENTS</div>
+  <div class="section-title" data-fr="Nos Activités" data-en="Our Activities">Nos Activités</div>
+  <div class="section-sub" data-fr="TERRAIN · PROJETS · ÉVÉNEMENTS" data-en="FIELD · PROJECTS · EVENTS">TERRAIN · PROJETS · ÉVÉNEMENTS</div>
   <div class="gallery-grid">
-    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🌾</div><div>ANI · Phase Pilote</div><div>Agriculture Nouvelle Ivoirienne</div><div class="coming-soon">PHOTOS À VENIR · 2026</div></div></div>
-    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🚀</div><div>SEINBU ONE · Lancement</div><div>Super-app Pi Network CI</div><div class="coming-soon">PHOTOS À VENIR · 2026</div></div></div>
-    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🏗️</div><div>SEINBU IMMOBILIER</div><div>Projets Abidjan</div><div class="coming-soon">PHOTOS À VENIR · 2026</div></div></div>
-    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🌿</div><div>NUTRITECH CELLULAIRE</div><div>Produits &amp; Laboratoire</div><div class="coming-soon">PHOTOS À VENIR · 2026</div></div></div>
-    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🎗️</div><div>HAVILA FOUNDATION</div><div>Actions Sociales CI</div><div class="coming-soon">PHOTOS À VENIR · 2026</div></div></div>
-    <div class="gallery-card" style="background:rgba(212,168,39,.05);border-color:rgba(212,168,39,.2)"><div class="gallery-placeholder"><div class="emoji">📱</div><div style="color:var(--gold);font-weight:700">Suivez-nous sur Facebook</div><div style="margin-top:8px"><a href="https://www.facebook.com/share/19P4V3FrqY/" target="_blank" style="color:var(--gold);text-decoration:none;font-size:12px;font-weight:700">👥 Page officielle SEINBU GROUP →</a></div></div></div>
+    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🌾</div><div data-fr="ANI · Phase Pilote" data-en="ANI · Pilot Phase">ANI · Phase Pilote</div><div data-fr="Agriculture Nouvelle Ivoirienne" data-en="New Ivorian Agriculture">Agriculture Nouvelle Ivoirienne</div><div class="coming-soon" data-fr="PHOTOS À VENIR · 2026" data-en="PHOTOS COMING · 2026">PHOTOS À VENIR · 2026</div></div></div>
+    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🚀</div><div data-fr="SEINBU ONE · Lancement" data-en="SEINBU ONE · Launch">SEINBU ONE · Lancement</div><div data-fr="Super-app Pi Network CI" data-en="Pi Network CI Super-app">Super-app Pi Network CI</div><div class="coming-soon" data-fr="PHOTOS À VENIR · 2026" data-en="PHOTOS COMING · 2026">PHOTOS À VENIR · 2026</div></div></div>
+    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🏗️</div><div data-fr="SEINBU IMMOBILIER" data-en="SEINBU IMMOBILIER">SEINBU IMMOBILIER</div><div data-fr="Projets Abidjan" data-en="Abidjan Projects">Projets Abidjan</div><div class="coming-soon" data-fr="PHOTOS À VENIR · 2026" data-en="PHOTOS COMING · 2026">PHOTOS À VENIR · 2026</div></div></div>
+    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🌿</div><div data-fr="NUTRITECH CELLULAIRE" data-en="NUTRITECH CELLULAIRE">NUTRITECH CELLULAIRE</div><div data-fr="Produits &amp; Laboratoire" data-en="Products &amp; Laboratory">Produits &amp; Laboratoire</div><div class="coming-soon" data-fr="PHOTOS À VENIR · 2026" data-en="PHOTOS COMING · 2026">PHOTOS À VENIR · 2026</div></div></div>
+    <div class="gallery-card"><div class="gallery-placeholder"><div class="emoji">🎗️</div><div data-fr="HAVILA FOUNDATION" data-en="HAVILA FOUNDATION">HAVILA FOUNDATION</div><div data-fr="Actions Sociales CI" data-en="CI Social Actions">Actions Sociales CI</div><div class="coming-soon" data-fr="PHOTOS À VENIR · 2026" data-en="PHOTOS COMING · 2026">PHOTOS À VENIR · 2026</div></div></div>
+    <div class="gallery-card" style="background:rgba(212,168,39,.05);border-color:rgba(212,168,39,.2)"><div class="gallery-placeholder"><div class="emoji">📱</div><div style="color:var(--gold);font-weight:700" data-fr="Suivez-nous sur Facebook" data-en="Follow us on Facebook">Suivez-nous sur Facebook</div><div style="margin-top:8px"><a href="https://www.facebook.com/share/19P4V3FrqY/" target="_blank" style="color:var(--gold);text-decoration:none;font-size:12px;font-weight:700" data-fr="👥 Page officielle SEINBU GROUP →" data-en="👥 Official SEINBU GROUP page →">👥 Page officielle SEINBU GROUP →</a></div></div></div>
   </div>
 </section>
 
 <section id="equipe">
-  <div class="section-title">Notre Équipe</div>
-  <div class="section-sub">DIRECTION · LEADERSHIP</div>
+  <div class="section-title" data-fr="Notre Équipe" data-en="Our Team">Notre Équipe</div>
+  <div class="section-sub" data-fr="DIRECTION · LEADERSHIP" data-en="MANAGEMENT · LEADERSHIP">DIRECTION · LEADERSHIP</div>
   <div class="team-grid">
     <div class="team-card">
       <div class="team-photo" id="ceo-photo"><span>A</span></div>
       <div class="team-name">Alexandre Désiré Alley KOUASSI</div>
-      <div class="team-role">Fondateur &amp; PDG</div>
-      <div class="team-role-en">Founder &amp; CEO</div>
+      <div class="team-role" data-fr="Fondateur &amp; PDG" data-en="Founder &amp; CEO">Fondateur &amp; PDG</div>
+      <div class="team-role-en" data-fr="Founder &amp; CEO" data-en="Fondateur &amp; PDG">Founder &amp; CEO</div>
       <div style="margin-top:12px">
-        <label for="photo-upload" style="display:inline-block;cursor:pointer;background:rgba(212,168,39,.1);border:1px solid rgba(212,168,39,.3);color:var(--gold);font-size:10px;font-weight:700;padding:6px 14px;border-radius:8px">📷 Ajouter photo</label>
+        <label for="photo-upload" style="display:inline-block;cursor:pointer;background:rgba(212,168,39,.1);border:1px solid rgba(212,168,39,.3);color:var(--gold);font-size:10px;font-weight:700;padding:6px 14px;border-radius:8px" data-fr="📷 Ajouter photo" data-en="📷 Add photo">📷 Ajouter photo</label>
         <input type="file" id="photo-upload" accept="image/*" style="display:none" onchange="loadPhoto(event)"/>
       </div>
     </div>
     <div class="team-card" style="border-style:dashed;opacity:.6">
       <div class="team-photo">＋</div>
-      <div class="team-name" style="color:var(--sub)">Poste à pourvoir</div>
-      <div class="team-role" style="color:var(--muted)">Direction Générale</div>
-      <div class="team-role-en" style="color:var(--muted)">À enrichir</div>
+      <div class="team-name" style="color:var(--sub)" data-fr="Poste à pourvoir" data-en="Position available">Poste à pourvoir</div>
+      <div class="team-role" style="color:var(--muted)" data-fr="Direction Générale" data-en="General Management">Direction Générale</div>
+      <div class="team-role-en" style="color:var(--muted)" data-fr="À enrichir" data-en="To be filled">À enrichir</div>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="section-title">Contact</div>
-  <div class="section-sub">REJOIGNEZ L'ÉCOSYSTÈME SEINBU</div>
+  <div class="section-title" data-fr="Contact" data-en="Contact">Contact</div>
+  <div class="section-sub" data-fr="REJOIGNEZ L'ÉCOSYSTÈME SEINBU" data-en="JOIN THE SEINBU ECOSYSTEM">REJOIGNEZ L'ÉCOSYSTÈME SEINBU</div>
   <div class="contact-grid">
     <a href="mailto:e.seinbugroup@gmail.com" class="contact-card" title="Email">
       <svg viewBox="0 0 24 24" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:8px"><rect width="24" height="24" rx="4" fill="#EA4335"/><path d="M4 7l8 5 8-5M4 7h16v10H4V7z" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
@@ -275,9 +398,9 @@ footer{background:#020A03;border-top:1px solid var(--border);padding:40px 20px;t
       <img src="assets/logo-seinbu-one.png" style="width:36px;height:36px;object-fit:contain;margin-bottom:8px;border-radius:8px"/>
       <div class="contact-value">seinbu-one.vercel.app</div>
     </a>
-    <div class="contact-card" style="cursor:default" title="Siège Social">
+    <div class="contact-card" style="cursor:default">
       <div style="font-size:32px;margin-bottom:8px">📍</div>
-      <div class="contact-value">Abidjan, Côte d'Ivoire</div>
+      <div class="contact-value" data-fr="Abidjan, Côte d'Ivoire" data-en="Abidjan, Côte d'Ivoire">Abidjan, Côte d'Ivoire</div>
     </div>
   </div>
 </section>
@@ -287,17 +410,31 @@ footer{background:#020A03;border-top:1px solid var(--border);padding:40px 20px;t
   <div class="footer-name">SEINBU GROUP SA</div>
   <div class="footer-sub">SEIGNEURIAL INFINITE BUSINESS GROUP · ABIDJAN, CÔTE D'IVOIRE</div>
   <div class="footer-links">
-    <a href="#vision">Vision</a><a href="#entites">Entités</a><a href="#pi">Pi &amp; SBC</a>
-    <a href="#havila">HAVILA</a><a href="#equipe">Équipe</a><a href="#contact">Contact</a>
+    <a href="#vision" data-fr="Vision" data-en="Vision">Vision</a>
+    <a href="#entites" data-fr="Entités" data-en="Entities">Entités</a>
+    <a href="#pi">Pi &amp; SBC</a>
+    <a href="#havila">HAVILA</a>
+    <a href="#equipe" data-fr="Équipe" data-en="Team">Équipe</a>
+    <a href="#contact">Contact</a>
     <a href="https://seinbu-one.vercel.app" target="_blank">SEINBU ONE</a>
   </div>
-  <div class="footer-copy">© 2026 SEINBU GROUP SA · Tous droits réservés · <em>"Un conglomérat. Une vision. Une Afrique souveraine."</em></div>
+  <div class="footer-copy" data-fr="© 2026 SEINBU GROUP SA · Tous droits réservés · Un conglomérat. Une vision. Une Afrique souveraine." data-en="© 2026 SEINBU GROUP SA · All rights reserved · One conglomerate. One vision. One sovereign Africa.">© 2026 SEINBU GROUP SA · Tous droits réservés · <em>"Un conglomérat. Une vision. Une Afrique souveraine."</em></div>
 </footer>
+
 <script>
-function loadPhoto(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{document.getElementById('ceo-photo').innerHTML='<img src="'+ev.target.result+'" alt="PDG"/>'};
+function setLang(lang) {
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+  });
+  document.documentElement.lang = lang;
+}
+function loadPhoto(e) {
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ev => { document.getElementById('ceo-photo').innerHTML = '<img src="' + ev.target.result + '" alt="PDG"/>'; };
   r.readAsDataURL(f);
 }
 </script>
